@@ -1,0 +1,13 @@
+dim Ret_val
+dim args As String
+args = ActiveWorkbook.Path & "\PythonCode.py 20"
+Ret_val = CreateObject("WScript.Shell").Exec("CMD /s /k python " & args).StdOut.ReadAll
+
+' call batch file, could not get stdout, only the file address returned
+Ret_val = CreateObject("WScript.Shell").Exec("CMD /s /k PyDo.bat " & args).StdOut.ReadAll
+
+
+''PyDo.bat
+cd c:\Users\name\Documents
+@python %1 %2
+exit
